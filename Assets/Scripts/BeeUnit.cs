@@ -12,7 +12,9 @@ public class BeeUnit : MonoBehaviour {
 
 	public float selfLearning = 2.0f;
 	public float globalLearning = 2.0f;
+
 	public float randomizationMultiplier = 1.0f;
+	public float maxVelocity = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +49,9 @@ public class BeeUnit : MonoBehaviour {
 
 				Vector2 rand = Random.insideUnitCircle;
 				bee.velocity += new Vector3(rand.x, rand.y, 0.0f) * Time.deltaTime * randomizationMultiplier;
+
+				if (bee.velocity.magnitude > maxVelocity)
+					bee.velocity = (bee.velocity / bee.velocity.magnitude) * maxVelocity;
 			}
 		}
 	}

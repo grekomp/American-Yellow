@@ -59,3 +59,4 @@ MonoBehaviour:
   selfLearning: 8
   globalLearning: 2
   randomizationMultiplier: 10
+  maxVelocity: 5
