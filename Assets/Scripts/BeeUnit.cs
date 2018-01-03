@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +23,28 @@ public class BeeUnit : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update() {
+	void Update()
+	{
+		UpdateBeesVelocity();
+		CalculateUnitPosition();
+	}
+
+	private void CalculateUnitPosition()
+	{
+		Vector3 averageBeesPosition = new Vector3();
+
+		foreach (Bee bee in bees)
+		{
+			averageBeesPosition += bee.transform.position;
+		}
+
+		averageBeesPosition /= bees.Length;
+
+		transform.position = Vector3.Lerp(transform.position, averageBeesPosition, Time.deltaTime);
+	}
+
+	private void UpdateBeesVelocity()
+	{
 		Bee bestBee = null;
 		float bestFitness = float.MinValue;
 
@@ -43,11 +65,11 @@ public class BeeUnit : MonoBehaviour {
 
 		if (bestBee != null)
 		{
-			foreach(Bee bee in bees)
+			foreach (Bee bee in bees)
 			{
-				bee.velocity += Time.deltaTime * (selfLearning * Random.value * (bee.bestPosition - bee.transform.position) + globalLearning * Random.value * (bestBee.transform.position - bee.transform.position));
+				bee.velocity += Time.deltaTime * (selfLearning * UnityEngine.Random.value * (bee.bestPosition - bee.transform.position) + globalLearning * UnityEngine.Random.value * (bestBee.transform.position - bee.transform.position));
 
-				Vector2 rand = Random.insideUnitCircle;
+				Vector2 rand = UnityEngine.Random.insideUnitCircle;
 				bee.velocity += new Vector3(rand.x, rand.y, 0.0f) * Time.deltaTime * randomizationMultiplier;
 
 				if (bee.velocity.magnitude > maxVelocity)
@@ -67,7 +89,7 @@ public class BeeUnit : MonoBehaviour {
 
 		for (int i = 0; i < numBees; i++)
 		{
-			bees[i] = Instantiate(beePrefab, transform.position, transform.rotation).GetComponent<Bee>();
+			bees[i] = Instantiate(beePrefab, Vector3.zero, transform.rotation).GetComponent<Bee>();
 			bees[i].RandomizeVelocity();
 		}
 	}
