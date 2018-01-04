@@ -5,42 +5,74 @@ using UnityEngine;
 
 public class BeeUnit : MonoBehaviour {
 
-	public int numBees = 20;
 	public Target target;
-	public Bee[] bees;
 
+	public int maxBees = 20;
+	public int numBees = 20;
+
+	public float targetReachedTolerance = 0.1f;
+
+	public Color unitColor;
+
+	// Actions
+	public bool actionInProgress = false;
+	public GameAction currentAction;
+
+	public bool carriesInventory { get { return carriedItem != null; } }
+	public InventoryItem carriedItem;
+
+	// Swarm parameters
+	Bee[] bees;
 	public Bee beePrefab;
 
 	public float selfLearning = 2.0f;
 	public float globalLearning = 2.0f;
 
 	public float randomizationMultiplier = 1.0f;
-	public float maxVelocity = 1.0f;
+	public float maxBeesVelocity = 5.0f;
 
-	// Use this for initialization
 	void Start () {
 		Initialize();
+		UIManager.AddUnitIcon(this);
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
+		if(IsTargetReached())
+		{
+			if (actionInProgress == false)
+			{
+				StartAction(target.GetAction());
+			}
+		}
+
+		UpdateActionProgress();
 		UpdateBeesVelocity();
 		CalculateUnitPosition();
 	}
 
+	private bool IsTargetReached()
+	{
+		return (target.transform.position - transform.position).magnitude <= targetReachedTolerance;
+	}
+
+	private void UpdateActionProgress()
+	{
+		if (actionInProgress)
+		{
+			if (currentAction.actionFinished)
+			{
+				if (currentAction.requiresInventorySpace)
+				{
+					carriedItem = currentAction.GetReward();
+				}
+			}
+		}
+	}
+
 	private void CalculateUnitPosition()
 	{
-		Vector3 averageBeesPosition = new Vector3();
-
-		foreach (Bee bee in bees)
-		{
-			averageBeesPosition += bee.transform.position;
-		}
-
-		averageBeesPosition /= bees.Length;
-
-		transform.position = Vector3.Lerp(transform.position, averageBeesPosition, Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime);
 	}
 
 	private void UpdateBeesVelocity()
@@ -72,8 +104,8 @@ public class BeeUnit : MonoBehaviour {
 				Vector2 rand = UnityEngine.Random.insideUnitCircle;
 				bee.velocity += new Vector3(rand.x, rand.y, 0.0f) * Time.deltaTime * randomizationMultiplier;
 
-				if (bee.velocity.magnitude > maxVelocity)
-					bee.velocity = (bee.velocity / bee.velocity.magnitude) * maxVelocity;
+				if (bee.velocity.magnitude > maxBeesVelocity)
+					bee.velocity = (bee.velocity / bee.velocity.magnitude) * maxBeesVelocity;
 			}
 		}
 	}
@@ -83,14 +115,29 @@ public class BeeUnit : MonoBehaviour {
 		return -(currentPosition - targetPosition).magnitude;
 	}
 
-	public void Initialize()
+	void Initialize()
 	{
-		bees = new Bee[numBees];
+		bees = new Bee[maxBees];
 
-		for (int i = 0; i < numBees; i++)
+		for (int i = 0; i < maxBees; i++)
 		{
-			bees[i] = Instantiate(beePrefab, Vector3.zero, transform.rotation).GetComponent<Bee>();
+			bees[i] = Instantiate(beePrefab, transform.position, transform.rotation).GetComponent<Bee>();
 			bees[i].RandomizeVelocity();
+		}
+	}
+
+	public void StartAction(GameAction action)
+	{
+		if (
+			actionInProgress == false &&
+			action.actionInProgress == false &&
+			(action.requiresInventorySpace == false || carriesInventory == false)
+			)
+		{
+			currentAction = action;
+			actionInProgress = true;
+
+			action.StartAction();
 		}
 	}
 }

@@ -9,57 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1270226052014276}
+  m_RootGameObject: {fileID: 1143411202367516}
   m_IsPrefabParent: 1
---- !u!1 &1270226052014276
+--- !u!1 &1143411202367516
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4176948806014712}
-  - component: {fileID: 114957434737184372}
+  - component: {fileID: 4182805594281914}
+  - component: {fileID: 114285019568418386}
   m_Layer: 0
-  m_Name: BeeUnit
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4176948806014712
+--- !u!4 &4182805594281914
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1270226052014276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1143411202367516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114957434737184372
+--- !u!114 &114285019568418386
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1270226052014276}
+  m_GameObject: {fileID: 1143411202367516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6ca00b1e479314e9de255b52c24632, type: 3}
+  m_Script: {fileID: 11500000, guid: 63c07617e7f8ad94883ce655f9dcea66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  maxBees: 50
-  numBees: 50
-  actionInProgress: 0
-  currentAction: {fileID: 0}
-  carriedItem: {fileID: 0}
-  beePrefab: {fileID: 114348641085072258, guid: 57558ccd346e5864eaf7fe70c9849716,
+  unitIcons: {fileID: 0}
+  targetIcons: {fileID: 0}
+  unitIconPrefab: {fileID: 114993926283808018, guid: 0c0b85ee0d70fcb4e840305bb0c19a08,
     type: 2}
-  selfLearning: 8
-  globalLearning: 2
-  randomizationMultiplier: 10
-  maxBeesVelocity: 5
+  targetIconPrefab: {fileID: 1004091340363722, guid: cb7eca0b43cb3344d9abbc46e4f5ddd2,
+    type: 2}

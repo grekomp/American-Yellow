@@ -16,6 +16,9 @@ public class Bee : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position = transform.position + velocity * Time.deltaTime;
+
+		float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	public void RandomizeVelocity()

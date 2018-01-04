@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
-	// Use this for initialization
+	public GameAction action;
+
 	void Start () {
-		
+		UIManager.AddTargetIcon(this);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public GameAction GetAction()
+	{
+		return action;
 	}
 }
