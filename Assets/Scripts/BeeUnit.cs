@@ -15,9 +15,6 @@ public class BeeUnit : MonoBehaviour {
 	public Color unitColor;
 
 	// Actions
-	public bool actionInProgress = false;
-	public GameAction currentAction;
-
 	public bool carriesInventory { get { return carriedItem != null; } }
 	public InventoryItem carriedItem;
 
@@ -33,22 +30,25 @@ public class BeeUnit : MonoBehaviour {
 
 	void Start () {
 		Initialize();
-		UIManager.AddUnitIcon(this);
+		UIManager.instance.AddUnitIcon(this);
 	}
 
 	void Update()
 	{
-		if(IsTargetReached())
+		if (target != null)
 		{
-			if (actionInProgress == false)
+			if (IsTargetReached() && target.actionStarted == false)
 			{
-				StartAction(target.GetAction());
+				TryStartTargetAction();
 			}
-		}
 
-		UpdateActionProgress();
-		UpdateBeesVelocity();
-		CalculateUnitPosition();
+			UpdateBeesVelocity(target.transform);
+			CalculateUnitPosition();
+		} else
+		{
+			UpdateBeesVelocity(transform);
+		}
+		
 	}
 
 	private bool IsTargetReached()
@@ -56,34 +56,20 @@ public class BeeUnit : MonoBehaviour {
 		return (target.transform.position - transform.position).magnitude <= targetReachedTolerance;
 	}
 
-	private void UpdateActionProgress()
-	{
-		if (actionInProgress)
-		{
-			if (currentAction.actionFinished)
-			{
-				if (currentAction.requiresInventorySpace)
-				{
-					carriedItem = currentAction.GetReward();
-				}
-			}
-		}
-	}
-
 	private void CalculateUnitPosition()
 	{
 		transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime);
 	}
 
-	private void UpdateBeesVelocity()
+	private void UpdateBeesVelocity(Transform targetTransform)
 	{
 		Bee bestBee = null;
 		float bestFitness = float.MinValue;
 
 		foreach (Bee bee in bees)
 		{
-			float currentFitness = Fitness(bee.transform.position, target.transform.position);
-			if (currentFitness > Fitness(bee.bestPosition, target.transform.position))
+			float currentFitness = Fitness(bee.transform.position, targetTransform.position);
+			if (currentFitness > Fitness(bee.bestPosition, targetTransform.position))
 			{
 				bee.bestPosition = bee.transform.position;
 			}
@@ -121,23 +107,39 @@ public class BeeUnit : MonoBehaviour {
 
 		for (int i = 0; i < maxBees; i++)
 		{
-			bees[i] = Instantiate(beePrefab, transform.position, transform.rotation).GetComponent<Bee>();
+			bees[i] = Instantiate(beePrefab, transform.position, transform.rotation, FolderHelper.instance.bees).GetComponent<Bee>();
 			bees[i].RandomizeVelocity();
 		}
 	}
 
-	public void StartAction(GameAction action)
+	public void TryStartTargetAction()
 	{
-		if (
-			actionInProgress == false &&
-			action.actionInProgress == false &&
-			(action.requiresInventorySpace == false || carriesInventory == false)
-			)
-		{
-			currentAction = action;
-			actionInProgress = true;
+		target.StartAction();
+	}
 
-			action.StartAction();
+	public bool CarriesItemOfType(ItemTypes type)
+	{
+		if (type == ItemTypes.None && carriesInventory == false)
+			return true;
+
+		if (carriesInventory && type == carriedItem.type)
+			return true;
+
+		return false;
+	}
+
+	public bool ChangeTarget(Target newTarget)
+	{
+		if ((target == null || target.CanLeave()) && newTarget.CanBeOccupiedBy(this))
+		{
+			if (target != null) target.TryLeave();
+			newTarget.Occupy(this);
+
+			target = newTarget;
+			return true;
+		} else
+		{
+			return false;
 		}
 	}
 }

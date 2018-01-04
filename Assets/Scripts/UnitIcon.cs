@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UnitIcon : MonoBehaviour {
 
-	public BeeUnit target;
+	public BeeUnit unit;
 
 	public GameObject selection;
 	public Transform itemIcon;
@@ -14,7 +14,7 @@ public class UnitIcon : MonoBehaviour {
 	public Slider actionSlider;
 
 	void Start () {
-		transform.Find("UnitIconBackground").GetComponent<Image>().color = target.unitColor;
+		transform.Find("UnitIconBackground").GetComponent<Image>().color = unit.unitColor;
 		actionSlider = transform.Find("ActionSlider").GetComponent<Slider>();
 		itemIcon = transform.Find("ItemIcon");
 		itemIconImage = itemIcon.Find("ItemIconImage").GetComponent<Image>();
@@ -23,30 +23,30 @@ public class UnitIcon : MonoBehaviour {
 	
 	void Update () {
 		// Draw selection border
-		selection.SetActive(SelectionManager.IsSelected(target));
+		selection.SetActive(SelectionManager.IsSelected(unit));
 
 		// Draw action progress bar
-		if (target.currentAction != null)
+		if (unit.target != null)
 		{
-			actionSlider.gameObject.SetActive(target.currentAction.actionInProgress);
-			actionSlider.value = 1 - target.currentAction.actionTimeLeft / target.currentAction.actionTimeFull;
+			actionSlider.gameObject.SetActive(unit.target.actionStarted && unit.target.actionFinished == false);
+			actionSlider.value = 1 - unit.target.actionTimeRemaining / unit.target.actionTimeFull;
 		} else
 		{
 			actionSlider.gameObject.SetActive(false);
 		}
 
 		// Draw carried item
-		itemIcon.gameObject.SetActive(target.carriesInventory);
+		itemIcon.gameObject.SetActive(unit.carriesInventory);
 
-		if (target.carriesInventory)
+		if (unit.carriesInventory)
 		{
-			itemIconImage.sprite = target.carriedItem.icon;
-			itemIconBackground.color = target.carriedItem.iconBackgroundColor;
+			itemIconImage.sprite = unit.carriedItem.icon;
+			itemIconBackground.color = unit.carriedItem.iconBackgroundColor;
 		}
 	}
 
 	public void OnClick()
 	{
-		SelectionManager.SetSelection(target);
+		SelectionManager.SetSelection(unit);
 	}
 }

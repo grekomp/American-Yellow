@@ -511,7 +511,7 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemIconImage: {fileID: 0}
   itemIconBackground: {fileID: 0}
-  slider: {fileID: 0}
+  actionSlider: {fileID: 0}
 --- !u!222 &222208088165139128
 CanvasRenderer:
   m_ObjectHideFlags: 1
