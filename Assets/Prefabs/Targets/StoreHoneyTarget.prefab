@@ -55,8 +55,8 @@ MonoBehaviour:
   occupant: {fileID: 0}
   actionStarted: 0
   actionFinished: 0
-  actionTimeFull: 4
-  actionTimeRemaining: 4
+  actionTimeFull: 1
+  actionTimeRemaining: 1
   isInteruptible: 0
   resetOnInterupt: 1
   destroyOnComplete: 0
@@ -66,6 +66,7 @@ MonoBehaviour:
   consumesItem: 1
   icon: {fileID: 21300000, guid: 4f02d17b20956c44da420d5570339c02, type: 3}
   iconBackgroundColor: {r: 0.46020758, g: 0.4637781, b: 0.97794116, a: 0}
+  sourceSpawner: {fileID: 0}
 --- !u!212 &212299449534469312
 SpriteRenderer:
   m_ObjectHideFlags: 1

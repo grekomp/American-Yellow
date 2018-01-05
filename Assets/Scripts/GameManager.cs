@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,15 @@ public class GameManager : MonoBehaviour {
 	public int honey = 0;
 	public int nectar = 0;
 
-	// Use this for initialization
+	public float hiveHealth = 10.0f;
+	public float maxHiveHealth = 10.0f;
+
 	void Awake () {
 		instance = this;
+
+		hiveHealth = maxHiveHealth;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
@@ -38,4 +42,24 @@ public class GameManager : MonoBehaviour {
 
 		return false;
 	}
+
+	public void DamageHive(float damage)
+	{
+		hiveHealth -= damage;
+
+		if (hiveHealth <= 0)
+		{
+			GameOver();
+		}
+	}
+
+	private void GameOver()
+	{
+		throw new NotImplementedException();
+	}
+
+	public void RepairHive(float amount)
+	{
+		hiveHealth += amount;
+	} 
 }

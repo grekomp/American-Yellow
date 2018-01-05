@@ -59,13 +59,14 @@ MonoBehaviour:
   actionTimeRemaining: 4
   isInteruptible: 0
   resetOnInterupt: 1
-  destroyOnComplete: 0
+  destroyOnComplete: 1
   reward: {fileID: 114090184829488722, guid: 1497e4f776dae3a4e891110f83f95a2e, type: 2}
   requiresFreeInventory: 1
   requiredItem: 0
   consumesItem: 1
   icon: {fileID: 21300000, guid: 4409d86ca7a82c04cae481c994880e9f, type: 3}
   iconBackgroundColor: {r: 0.28627452, g: 0.5647059, b: 0.41568628, a: 1}
+  sourceSpawner: {fileID: 0}
 --- !u!212 &212521710913128024
 SpriteRenderer:
   m_ObjectHideFlags: 1
