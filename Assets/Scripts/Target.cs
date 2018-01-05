@@ -28,6 +28,8 @@ public class Target : MonoBehaviour {
 	public Sprite icon;
 	public Color iconBackgroundColor;
 
+	public TargetSpawner sourceSpawner;
+
 	protected virtual void Start () {
 		UIManager.instance.AddTargetIcon(this);
 
@@ -56,6 +58,11 @@ public class Target : MonoBehaviour {
 
 		if (destroyOnComplete)
 		{
+			if (sourceSpawner != null)
+			{
+				sourceSpawner.Remove();
+			}
+
 			Destroy(gameObject);
 		}
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FolderHelper : MonoBehaviour {
 
 	public Transform unitIcons;
+	public Transform targets;
 	public Transform targetIcons;
 	public Transform gameActions;
 	public Transform bees;
