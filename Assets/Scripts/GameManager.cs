@@ -13,12 +13,22 @@ public class GameManager : MonoBehaviour {
 	public float hiveHealth = 10.0f;
 	public float maxHiveHealth = 10.0f;
 
+	public int maxUnits = 3;
+	public int currentUnits = 0;
+
+	public int unitProductionCost = 5;
+
 	void Awake () {
 		instance = this;
 
 		hiveHealth = maxHiveHealth;
 	}
-	
+
+	private void Start()
+	{
+		UIManager.instance.UpdateScore(honey);
+	}
+
 	void Update () {
 		
 	}
@@ -62,4 +72,14 @@ public class GameManager : MonoBehaviour {
 	{
 		hiveHealth += amount;
 	} 
+
+	public void DestroyedUnit()
+	{
+		currentUnits--;
+	}
+
+	public void AddedUnit()
+	{
+		currentUnits++;
+	}
 }
