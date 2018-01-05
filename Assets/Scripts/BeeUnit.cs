@@ -30,6 +30,9 @@ public class BeeUnit : MonoBehaviour {
 
 	void Start () {
 		Initialize();
+		GameManager.instance.AddedUnit();
+
+		//unitColor = UnityEngine.Random.ColorHSV();
 		UIManager.instance.AddUnitIcon(this);
 	}
 
@@ -141,5 +144,63 @@ public class BeeUnit : MonoBehaviour {
 		{
 			return false;
 		}
+	}
+
+	public void KillBees(int amount)
+	{
+		if (numBees >= amount)
+		{
+			numBees -= amount;
+		} else {
+			numBees = 0;
+		}
+
+		for (int i = numBees; i < maxBees; i++)
+		{
+			if (bees[i] != null)
+			{
+				Destroy(bees[i]);
+			}
+		}
+
+		if (numBees == 0)
+		{
+			DestroyUnit();
+		}
+	}
+
+	void DestroyBees()
+	{
+		for (int i = 0; i < maxBees; i++)
+		{
+			if (bees[i] != null)
+			{
+				Destroy(bees[i]);
+			}
+		}
+	}
+
+	private void DestroyUnit()
+	{
+		GameManager.instance.DestroyedUnit();
+		DestroyBees();
+		Destroy(gameObject);
+	}
+
+	public void SpawnBees(int amount)
+	{
+		numBees += amount;
+
+		if (numBees > maxBees) numBees = maxBees;
+
+		for (int i = 0; i < maxBees; i++)
+		{
+			if (bees[i] == null)
+			{
+				bees[i] = Instantiate(beePrefab, transform.position, transform.rotation, FolderHelper.instance.bees).GetComponent<Bee>();
+				bees[i].RandomizeVelocity();
+			}
+		}
+
 	}
 }
