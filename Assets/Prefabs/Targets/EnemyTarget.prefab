@@ -9,77 +9,93 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1559081259561464}
+  m_RootGameObject: {fileID: 1319350714672244}
   m_IsPrefabParent: 1
---- !u!1 &1559081259561464
+--- !u!1 &1319350714672244
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4047549372094886}
-  - component: {fileID: 212521710913128024}
-  - component: {fileID: 114145610596180638}
+  - component: {fileID: 4634418387442640}
+  - component: {fileID: 114171535808357260}
+  - component: {fileID: 212209788456434270}
+  - component: {fileID: 114417397242853130}
   m_Layer: 0
-  m_Name: GatherNectarTarget
+  m_Name: EnemyTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4047549372094886
+--- !u!4 &4634418387442640
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1319350714672244}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114145610596180638
+--- !u!114 &114171535808357260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
+  m_GameObject: {fileID: 1319350714672244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dcac372e8860f143b88ca17fd031675, type: 3}
+  m_Script: {fileID: 11500000, guid: 75f1f7d8faf9d674ca13848a2befd241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupant: {fileID: 0}
   actionStarted: 0
   actionFinished: 0
-  actionTimeFull: 4
-  actionTimeRemaining: 4
+  actionTimeFull: 5
+  actionTimeRemaining: 5
   isInteruptible: 0
   resetOnInterupt: 1
   destroyOnComplete: 1
-  reward: {fileID: 114090184829488722, guid: 1497e4f776dae3a4e891110f83f95a2e, type: 2}
-  requiresFreeInventory: 1
+  reward: {fileID: 0}
+  requiresFreeInventory: 0
   requiredItem: 0
-  consumesItem: 1
-  icon: {fileID: 21300000, guid: 60f390af10ede8c4cb531d1266b88c18, type: 3}
-  iconBackgroundColor: {r: 0.28627452, g: 0.5647059, b: 0.41568628, a: 1}
+  consumesItem: 0
+  icon: {fileID: 21300000, guid: 097f0eb589999854e916542ec050fb92, type: 3}
+  iconBackgroundColor: {r: 0.8014706, g: 0.10018382, b: 0.10018382, a: 1}
   sourceSpawner: {fileID: 0}
-  flowers:
-  - {fileID: 1098358337882778, guid: 070214a046a64784f854344cc34b221b, type: 2}
-  - {fileID: 1497831373029432, guid: cb054af539ab9a64bae1931e38cc62a9, type: 2}
-  - {fileID: 1281604265410608, guid: 8b53722d3a1016047a68dc367620cdf8, type: 2}
-  minFlowersToSpawn: 8
-  maxFlowersToSpawn: 12
-  spawnSpread: 1
---- !u!212 &212521710913128024
+--- !u!114 &114417397242853130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319350714672244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71de5cff47ae4774e8ba32fc8800b0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hive: {fileID: 0}
+  maxBees: 20
+  numBees: 20
+  attackDamage: 1
+  targetReachedTolerance: 0.5
+  beePrefab: {fileID: 114348641085072258, guid: 61756c78314971c4d9f0666571d191ab,
+    type: 2}
+  selfLearning: 8
+  globalLearning: 2
+  randomizationMultiplier: 5
+  maxBeesVelocity: 5
+--- !u!212 &212209788456434270
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
+  m_GameObject: {fileID: 1319350714672244}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

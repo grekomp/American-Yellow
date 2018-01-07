@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
+	public Hive hive;
+
 	public int honey = 0;
 	public int nectar = 0;
 
@@ -17,6 +19,9 @@ public class GameManager : MonoBehaviour {
 	public int currentUnits = 0;
 
 	public int unitProductionCost = 5;
+
+	public int currentEnemies = 0;
+	public int maxEnemies = 3; 
 
 	void Awake () {
 		instance = this;
@@ -65,7 +70,7 @@ public class GameManager : MonoBehaviour {
 
 	private void GameOver()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	public void RepairHive(float amount)
@@ -82,4 +87,15 @@ public class GameManager : MonoBehaviour {
 	{
 		currentUnits++;
 	}
+
+	public void DestroyedEnemy()
+	{
+		currentEnemies--;
+	}
+
+	public void AddedEnemy()
+	{
+		currentEnemies++;
+	}
+
 }

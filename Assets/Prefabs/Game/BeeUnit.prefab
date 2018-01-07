@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  maxBees: 50
-  numBees: 50
+  maxBees: 25
+  numBees: 25
   targetReachedTolerance: 0.5
   unitColor: {r: 0.6901961, g: 0.8352941, b: 1, a: 1}
   carriedItem: {fileID: 0}

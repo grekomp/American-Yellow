@@ -19,7 +19,8 @@ public class GatherNectarTarget : Target
 		for (int i = 0; i < flowersToSpawn; i++)
 		{
 			Vector3 spawnPosition = Random.insideUnitCircle * spawnSpread;
-			spawnPosition.z = spawnPosition.y * 0.1f;
+			spawnPosition += this.transform.position;
+			spawnPosition.z = spawnPosition.y * 0.01f + 0.5f;
 
 			Instantiate(flowers[Random.Range(0, flowers.Length)], spawnPosition, Quaternion.identity, this.transform);
 		}

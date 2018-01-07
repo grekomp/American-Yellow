@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour {
 	public UnitIcon unitIconPrefab;
 	public GameObject targetIconPrefab;
 
+	public GameObject enemyIconPrefab;
+
 	public Text scoreHoneyText;
 
 	public static UIManager instance;
@@ -40,4 +42,5 @@ public class UIManager : MonoBehaviour {
 	{
 		scoreHoneyText.text = scoreHoney.ToString();
 	}
+
 }
