@@ -22,7 +22,7 @@ public class TargetSpawner : MonoBehaviour {
 	void Start () {
 		instance = this;
 
-		timer = GetNextSpawnInterval();
+		//timer = GetNextSpawnInterval();
 	}
 	
 	void Update () {

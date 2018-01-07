@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4047549372094886}
-  - component: {fileID: 114033909268286844}
   - component: {fileID: 212521710913128024}
+  - component: {fileID: 114145610596180638}
   m_Layer: 0
   m_Name: GatherNectarTarget
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114033909268286844
+--- !u!114 &114145610596180638
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559081259561464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f1f7d8faf9d674ca13848a2befd241, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dcac372e8860f143b88ca17fd031675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupant: {fileID: 0}
@@ -64,9 +64,16 @@ MonoBehaviour:
   requiresFreeInventory: 1
   requiredItem: 0
   consumesItem: 1
-  icon: {fileID: 21300000, guid: 21e9d598c82b0744bb025f31a351a01e, type: 3}
+  icon: {fileID: 21300000, guid: 60f390af10ede8c4cb531d1266b88c18, type: 3}
   iconBackgroundColor: {r: 0.28627452, g: 0.5647059, b: 0.41568628, a: 1}
   sourceSpawner: {fileID: 0}
+  flowers:
+  - {fileID: 1098358337882778, guid: 070214a046a64784f854344cc34b221b, type: 2}
+  - {fileID: 1497831373029432, guid: cb054af539ab9a64bae1931e38cc62a9, type: 2}
+  - {fileID: 1281604265410608, guid: 8b53722d3a1016047a68dc367620cdf8, type: 2}
+  minFlowersToSpawn: 3
+  maxFlowersToSpawn: 6
+  spawnSpread: 1
 --- !u!212 &212521710913128024
 SpriteRenderer:
   m_ObjectHideFlags: 1
