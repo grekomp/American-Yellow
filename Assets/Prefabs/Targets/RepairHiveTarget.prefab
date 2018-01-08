@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1559081259561464}
+  m_RootGameObject: {fileID: 1469319157006008}
   m_IsPrefabParent: 1
---- !u!1 &1559081259561464
+--- !u!1 &1469319157006008
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4047549372094886}
-  - component: {fileID: 212521710913128024}
-  - component: {fileID: 114145610596180638}
+  - component: {fileID: 4989088224355620}
+  - component: {fileID: 114053937310069280}
+  - component: {fileID: 212433700799186852}
   m_Layer: 0
-  m_Name: GatherNectarTarget
+  m_Name: RepairHiveTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4047549372094886
+--- !u!4 &4989088224355620
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
+  m_GameObject: {fileID: 1469319157006008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114145610596180638
+--- !u!114 &114053937310069280
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
+  m_GameObject: {fileID: 1469319157006008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dcac372e8860f143b88ca17fd031675, type: 3}
+  m_Script: {fileID: 11500000, guid: c75ee7830f837874693fc33ca08c6251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupant: {fileID: 0}
@@ -59,27 +59,21 @@ MonoBehaviour:
   actionTimeRemaining: 2
   isInteruptible: 0
   resetOnInterupt: 1
-  destroyOnComplete: 1
-  reward: {fileID: 114090184829488722, guid: 1497e4f776dae3a4e891110f83f95a2e, type: 2}
-  requiresFreeInventory: 1
-  requiredItem: 0
+  destroyOnComplete: 0
+  reward: {fileID: 0}
+  requiresFreeInventory: 0
+  requiredItem: 1
   consumesItem: 1
-  icon: {fileID: 21300000, guid: 60f390af10ede8c4cb531d1266b88c18, type: 3}
-  iconBackgroundColor: {r: 0.28627452, g: 0.5647059, b: 0.41568628, a: 1}
+  icon: {fileID: 21300000, guid: 6e66a17740863424794cb10801a9d22d, type: 3}
+  iconBackgroundColor: {r: 1, g: 0.6764706, b: 0.6764706, a: 1}
   sourceSpawner: {fileID: 0}
-  flowers:
-  - {fileID: 1098358337882778, guid: 070214a046a64784f854344cc34b221b, type: 2}
-  - {fileID: 1497831373029432, guid: cb054af539ab9a64bae1931e38cc62a9, type: 2}
-  - {fileID: 1281604265410608, guid: 8b53722d3a1016047a68dc367620cdf8, type: 2}
-  minFlowersToSpawn: 8
-  maxFlowersToSpawn: 12
-  spawnSpread: 1
---- !u!212 &212521710913128024
+  addedHealth: 2
+--- !u!212 &212433700799186852
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1559081259561464}
+  m_GameObject: {fileID: 1469319157006008}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

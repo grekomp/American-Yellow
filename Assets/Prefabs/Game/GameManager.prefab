@@ -51,10 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e24b3b804863974d9f3bedb7c12f94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hive: {fileID: 0}
   honey: 0
   nectar: 0
   hiveHealth: 10
   maxHiveHealth: 10
-  maxUnits: 3
+  maxUnits: 5
   currentUnits: 0
   unitProductionCost: 5
+  currentEnemies: 0
+  maxEnemies: 3

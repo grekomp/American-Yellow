@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 	private void Start()
 	{
 		UIManager.instance.UpdateScore(honey);
+		UIManager.instance.UpdateHiveHealth(hiveHealth / maxHiveHealth);
 	}
 
 	void Update () {
@@ -66,6 +67,8 @@ public class GameManager : MonoBehaviour {
 		{
 			GameOver();
 		}
+
+		UIManager.instance.UpdateHiveHealth(hiveHealth / maxHiveHealth);
 	}
 
 	private void GameOver()
@@ -76,7 +79,10 @@ public class GameManager : MonoBehaviour {
 	public void RepairHive(float amount)
 	{
 		hiveHealth += amount;
-	} 
+		if (hiveHealth > maxHiveHealth) hiveHealth = maxHiveHealth;
+
+		UIManager.instance.UpdateHiveHealth(hiveHealth / maxHiveHealth);
+	}
 
 	public void DestroyedUnit()
 	{

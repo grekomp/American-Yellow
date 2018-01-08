@@ -56,8 +56,8 @@ MonoBehaviour:
   occupant: {fileID: 0}
   actionStarted: 0
   actionFinished: 0
-  actionTimeFull: 5
-  actionTimeRemaining: 5
+  actionTimeFull: 3
+  actionTimeRemaining: 3
   isInteruptible: 0
   resetOnInterupt: 1
   destroyOnComplete: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   hive: {fileID: 0}
   maxBees: 20
   numBees: 20
-  attackDamage: 1
+  attackDamage: 0.5
   targetReachedTolerance: 0.5
   beePrefab: {fileID: 114348641085072258, guid: 61756c78314971c4d9f0666571d191ab,
     type: 2}

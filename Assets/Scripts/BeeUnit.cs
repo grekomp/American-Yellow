@@ -7,6 +7,9 @@ public class BeeUnit : MonoBehaviour {
 
 	public Target target;
 
+	public bool movesToTargetPosition;
+	public Vector3 targetPosition;
+
 	public int maxBees = 20;
 	public int numBees = 20;
 
@@ -45,11 +48,17 @@ public class BeeUnit : MonoBehaviour {
 				TryStartTargetAction();
 			}
 
-			UpdateBeesVelocity(target.transform);
+			UpdateBeesVelocity(target.transform.position);
 			CalculateUnitPosition();
 		} else
 		{
-			UpdateBeesVelocity(transform);
+			if(movesToTargetPosition)
+			{
+				UpdateBeesVelocity(targetPosition);
+			} else
+			{
+				UpdateBeesVelocity(transform.position);
+			}
 		}
 		
 	}
@@ -64,15 +73,15 @@ public class BeeUnit : MonoBehaviour {
 		transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime);
 	}
 
-	private void UpdateBeesVelocity(Transform targetTransform)
+	private void UpdateBeesVelocity(Vector3 position)
 	{
 		Bee bestBee = null;
 		float bestFitness = float.MinValue;
 
 		foreach (Bee bee in bees)
 		{
-			float currentFitness = Fitness(bee.transform.position, targetTransform.position);
-			if (currentFitness > Fitness(bee.bestPosition, targetTransform.position))
+			float currentFitness = Fitness(bee.transform.position, position);
+			if (currentFitness > Fitness(bee.bestPosition, position))
 			{
 				bee.bestPosition = bee.transform.position;
 			}
@@ -139,6 +148,9 @@ public class BeeUnit : MonoBehaviour {
 			newTarget.Occupy(this);
 
 			target = newTarget;
+
+			movesToTargetPosition = false;
+
 			return true;
 		} else
 		{
@@ -202,5 +214,24 @@ public class BeeUnit : MonoBehaviour {
 			}
 		}
 
+	}
+
+	public bool MoveToPosition(Vector3 targetPosition)
+	{
+		if (target != null)
+		{
+			if (!target.TryLeave())
+			{
+				return false;
+			} else
+			{
+				target = null;
+			}
+		}
+
+		movesToTargetPosition = true;
+		this.targetPosition = targetPosition;
+
+		return true;
 	}
 }

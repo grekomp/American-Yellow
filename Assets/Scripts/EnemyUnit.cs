@@ -122,7 +122,6 @@ public class EnemyUnit : MonoBehaviour {
 		{
 			if(bee != null)
 			{
-				Debug.Log("Destroying bee");
 				Destroy(bee.gameObject);
 			}
 		}
@@ -130,7 +129,6 @@ public class EnemyUnit : MonoBehaviour {
 
 	void OnDestroy()
 	{
-		Debug.Log("Destroying enemy unit");
 		KillBees();
 		GameManager.instance.DestroyedEnemy();
 	}

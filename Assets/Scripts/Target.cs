@@ -25,6 +25,9 @@ public class Target : MonoBehaviour {
 	public ItemTypes requiredItem = ItemTypes.None;
 	public bool consumesItem = true;
 
+	public bool ejectsOnComplete = false;
+	public Vector3 ejectionOffset = new Vector3(0, -1, 0);
+
 	public Sprite icon;
 	public Color iconBackgroundColor;
 
@@ -73,6 +76,16 @@ public class Target : MonoBehaviour {
 		{
 			occupant.carriedItem = reward;
 		}
+
+		if (ejectsOnComplete)
+		{
+			occupant.MoveToPosition(GetEjectPosition());
+		}
+	}
+
+	private Vector3 GetEjectPosition()
+	{
+		return transform.position + ejectionOffset;
 	}
 
 	public virtual bool CanBeOccupiedBy(BeeUnit unit)
@@ -135,8 +148,6 @@ public class Target : MonoBehaviour {
 	{
 		if (CanLeave())
 		{
-			occupant = null;
-
 			if (actionFinished == false)
 			{
 				if (resetOnInterupt)
@@ -150,6 +161,8 @@ public class Target : MonoBehaviour {
 					Reset();
 				}
 			}
+
+			occupant = null;
 
 			return true;
 		}

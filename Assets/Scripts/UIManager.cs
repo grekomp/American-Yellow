@@ -8,8 +8,7 @@ public class UIManager : MonoBehaviour {
 	public UnitIcon unitIconPrefab;
 	public GameObject targetIconPrefab;
 
-	public GameObject enemyIconPrefab;
-
+	public Slider hiveHealthSlider;
 	public Text scoreHoneyText;
 
 	public static UIManager instance;
@@ -43,4 +42,10 @@ public class UIManager : MonoBehaviour {
 		scoreHoneyText.text = scoreHoney.ToString();
 	}
 
+	public void UpdateHiveHealth(float health)
+	{
+		hiveHealthSlider.value = health;
+
+		hiveHealthSlider.gameObject.SetActive(health < 1.0f);
+	}
 }
