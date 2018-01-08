@@ -438,11 +438,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114471564702153158, guid: 0c3d863900190dd448b949334e19b644,
-        type: 2}
-      propertyPath: iconBackgroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c3d863900190dd448b949334e19b644, type: 2}
   m_IsPrefabParent: 0
@@ -995,16 +990,6 @@ Prefab:
     - target: {fileID: 4534645476219580, guid: 72405badb057da642a221e613b1bc2d9, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114029564639671576, guid: 72405badb057da642a221e613b1bc2d9,
-        type: 2}
-      propertyPath: destroyOnComplete
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114029564639671576, guid: 72405badb057da642a221e613b1bc2d9,
-        type: 2}
-      propertyPath: ejectsOnComplete
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72405badb057da642a221e613b1bc2d9, type: 2}

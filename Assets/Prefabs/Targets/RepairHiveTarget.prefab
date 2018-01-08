@@ -64,6 +64,8 @@ MonoBehaviour:
   requiresFreeInventory: 0
   requiredItem: 1
   consumesItem: 1
+  ejectsOnComplete: 1
+  ejectionOffset: {x: 0, y: -1, z: 0}
   icon: {fileID: 21300000, guid: 6e66a17740863424794cb10801a9d22d, type: 3}
   iconBackgroundColor: {r: 1, g: 0.6764706, b: 0.6764706, a: 1}
   sourceSpawner: {fileID: 0}

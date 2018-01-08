@@ -49,11 +49,12 @@ public class BeeUnit : MonoBehaviour {
 			}
 
 			UpdateBeesVelocity(target.transform.position);
-			CalculateUnitPosition();
+			CalculateUnitPosition(target.transform.position);
 		} else
 		{
 			if(movesToTargetPosition)
 			{
+				CalculateUnitPosition(targetPosition);
 				UpdateBeesVelocity(targetPosition);
 			} else
 			{
@@ -68,9 +69,9 @@ public class BeeUnit : MonoBehaviour {
 		return (target.transform.position - transform.position).magnitude <= targetReachedTolerance;
 	}
 
-	private void CalculateUnitPosition()
+	private void CalculateUnitPosition(Vector3 newPosition)
 	{
-		transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime);
 	}
 
 	private void UpdateBeesVelocity(Vector3 position)
