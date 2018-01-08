@@ -62,12 +62,12 @@ MonoBehaviour:
   destroyOnComplete: 0
   reward: {fileID: 0}
   requiresFreeInventory: 0
-  requiredItem: 2
+  requiredItem: 1
   consumesItem: 1
   ejectsOnComplete: 1
   ejectionOffset: {x: 0, y: -1, z: 0}
-  icon: {fileID: 21300000, guid: 4f02d17b20956c44da420d5570339c02, type: 3}
-  iconBackgroundColor: {r: 0.46020758, g: 0.4637781, b: 0.97794116, a: 1}
+  icon: {fileID: 21300000, guid: 8a5a4e24e28419d4c885850d3d2fb0f3, type: 3}
+  iconBackgroundColor: {r: 0.29411766, g: 0.25490198, b: 0.17254902, a: 1}
   sourceSpawner: {fileID: 0}
 --- !u!212 &212299449534469312
 SpriteRenderer:

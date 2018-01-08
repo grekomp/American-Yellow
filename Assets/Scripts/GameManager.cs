@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
 	private void GameOver()
 	{
-		//throw new NotImplementedException();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void RepairHive(float amount)

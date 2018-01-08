@@ -23,6 +23,8 @@ public class EnemyUnit : MonoBehaviour {
 	public float randomizationMultiplier = 1.0f;
 	public float maxBeesVelocity = 5.0f;
 
+	public float velocity = 2;
+
 	void Start()
 	{
 		Initialize();
@@ -62,7 +64,7 @@ public class EnemyUnit : MonoBehaviour {
 
 	private void CalculateUnitPosition()
 	{
-		transform.position = Vector3.Lerp(transform.position, hive.transform.position, Time.deltaTime);
+		transform.position += (hive.transform.position - transform.position).normalized * velocity * Time.deltaTime;
 	}
 
 	private void UpdateBeesVelocity(Transform targetTransform)
