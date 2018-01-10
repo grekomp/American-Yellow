@@ -10,6 +10,7 @@ public class FolderHelper : MonoBehaviour {
 	public Transform gameActions;
 	public Transform bees;
 	public Transform beeUnits;
+	public Transform enemies;
 
 	public static FolderHelper instance;
 
