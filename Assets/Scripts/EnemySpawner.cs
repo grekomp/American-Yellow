@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	void Spawn()
 	{
-		GameObject spawnedObject = Instantiate(spawnPrefab, GetNextSpawnPosition(), Quaternion.identity, FolderHelper.instance.enemies);
+		Instantiate(spawnPrefab, GetNextSpawnPosition(), Quaternion.identity, FolderHelper.instance.enemies);
 
 	}
 }

@@ -19,6 +19,8 @@ public class FlowerWindMovement : MonoBehaviour {
 		timeOffset = Random.Range(0, timeRandomness);
 		timeOffset += transform.position.x * positionXMultiplier;
 		timeOffset += transform.position.y * positionYMultiplier;
+
+		transform.position += new Vector3(0, 0, transform.position.y * 0.01f + 0.5f);
 	}
 	
 	void Update () {

@@ -65,6 +65,8 @@ MonoBehaviour:
   requiresFreeInventory: 0
   requiredItem: 0
   consumesItem: 0
+  ejectsOnComplete: 0
+  ejectionOffset: {x: 0, y: -1, z: 0}
   icon: {fileID: 21300000, guid: 097f0eb589999854e916542ec050fb92, type: 3}
   iconBackgroundColor: {r: 0.8014706, g: 0.10018382, b: 0.10018382, a: 1}
   sourceSpawner: {fileID: 0}
@@ -90,6 +92,7 @@ MonoBehaviour:
   globalLearning: 2
   randomizationMultiplier: 5
   maxBeesVelocity: 5
+  velocity: 1
 --- !u!212 &212209788456434270
 SpriteRenderer:
   m_ObjectHideFlags: 1

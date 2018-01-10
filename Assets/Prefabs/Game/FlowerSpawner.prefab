@@ -51,12 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e886092d99c74a49a8df89cfaad3a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minInterval: 1
+  minInterval: 4
   maxInterval: 10
   alive: 0
-  maxAlive: 3
-  spawnPrefab: {fileID: 114033909268286844, guid: 08d2307b5580db44bacd7e716fc85c64,
+  maxAlive: 5
+  spawnPrefab: {fileID: 114145610596180638, guid: 08d2307b5580db44bacd7e716fc85c64,
     type: 2}
   bottomLeftCorner: {x: -8, y: -4}
   topRightCorner: {x: 8, y: 4}
+  bottomLeftCornerProxy: {x: -4, y: -3.5}
+  topRightCornerProxy: {x: 1.6, y: 1.6}
   timer: 0
